@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#EDE6E6</color>
+
+    <!--Teal-->
+    <color name="teal900">#004d40</color>
+    <color name="teal800">#00695c</color>
+    <!--Cyan-->
+    <color name="cyan900">#006064</color>
+    <color name="cyan800">#00838f</color>
+    <color name="cyan700">#0097a7</color>
+    <color name="cyan600">#00acc1</color>
+    <color name="cyan500">#00bcd4</color>
+
+
+</resources>

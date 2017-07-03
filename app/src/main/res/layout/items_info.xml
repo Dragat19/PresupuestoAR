@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:background="@color/gray"
+    android:padding="5dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="5dp"
+        android:background="@color/cardview_light_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+             <ImageView
+                 android:id="@+id/image_item"
+                 android:layout_width="100dp"
+                 android:layout_height="100dp"
+                 android:layout_alignParentLeft="true"
+                 android:layout_alignParentTop="true"
+                 android:layout_marginRight="10dp"
+                 android:src="@mipmap/ic_launcher_round" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textAllCaps="false"
+                    android:textSize="17sp"
+                    android:textColor="@color/cyan600"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/presupuestoInical_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title_item"
+                    android:layout_marginTop="10dp"
+                    android:text="Presupuesto inicial"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/value1_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/title_item"
+                    android:background="@drawable/rounded_corner"
+                    android:inputType="number"
+                    android:text="5000"
+                    android:textColor="@color/cyan600"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/montoDisponible_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monto Disponible"
+                    android:textSize="12sp"
+                    android:layout_alignBaseline="@+id/value2_item"
+                    android:layout_alignBottom="@+id/value2_item" />
+
+                <TextView
+                    android:id="@+id/value2_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/value1_item"
+                    android:background="@drawable/rounded_corner"
+                    android:layout_marginTop="6dp"
+                    android:inputType="number"
+                    android:textColor="@color/cyan600"
+                    android:text="4000"
+                    android:textSize="15dp" />
+
+
+             </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
