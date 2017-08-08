@@ -22,6 +22,8 @@ public class Categorias {
         this.imagen = imagen;
     }
 
+
+
     public Categorias(Context context) {
         this.ctx = context;
     }

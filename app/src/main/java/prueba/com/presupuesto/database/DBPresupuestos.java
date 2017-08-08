@@ -1,4 +1,4 @@
-package prueba.com.presupuesto;
+package prueba.com.presupuesto.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,45 +11,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 import prueba.com.presupuesto.Model.Categorias;
+import prueba.com.presupuesto.Model.Gastos;
 
 /**
  * Created by levaa on 6/30/2017.
  */
 
-public class DB_Presupuestos extends SQLiteOpenHelper {
+public class DBPresupuestos extends SQLiteOpenHelper {
+
 
     private static final String TABLE_CATEGORIAS = "Categoria";
     public static final String DATABASE_NAME = "PresupuestoDataBase";
 
-
-    /**--------COLUMNAS PARA LA TABLA DE CATEGORIAS--------*/
+    /**
+     * --------COLUMNAS PARA LA TABLA DE CATEGORIAS--------
+     */
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_CATEGORIA = "title";
-    private static final String COLUMN_MONTO_DISPONIBLE= "available";
-    private static final String COLUMN_MONTO_PRESUPUESTADO= "Budgeted";
+    private static final String COLUMN_MONTO_DISPONIBLE = "available";
+    private static final String COLUMN_MONTO_PRESUPUESTADO = "Budgeted";
     private static final String COLUMN_IMAGEN = "imagen";
     private static final String COLUMN_FECHA = "date";
 
-    /**----------------------COMANDOS SQL------------------------*/
+    /**
+     * ----------------------TABLA DE CATEGORIAS------------------------
+     */
     public static final String CREATE_SQL_PRESUPUESTO = "Create table " + TABLE_CATEGORIAS
             + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_IMAGEN + " INTEGER,"
-            +COLUMN_CATEGORIA+" text, "+COLUMN_MONTO_DISPONIBLE+ " text, "
-            +COLUMN_MONTO_PRESUPUESTADO+ " text, "+COLUMN_FECHA+ " text);";
+            + COLUMN_CATEGORIA + " text, " + COLUMN_MONTO_DISPONIBLE + " text, "
+            + COLUMN_MONTO_PRESUPUESTADO + " text, " + COLUMN_FECHA + " text);";
 
-    private final String[] projectionSwipe = {COLUMN_ID,COLUMN_CATEGORIA,COLUMN_IMAGEN,COLUMN_MONTO_DISPONIBLE,COLUMN_MONTO_PRESUPUESTADO,COLUMN_FECHA};
-    private Context context;
-
-    public DB_Presupuestos(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBPresupuestos(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
     }
+    private Context context;
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_SQL_PRESUPUESTO);
-
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -64,24 +69,25 @@ public class DB_Presupuestos extends SQLiteOpenHelper {
         register.put(COLUMN_IMAGEN, categorias.getImagen());
         register.put(COLUMN_MONTO_DISPONIBLE, categorias.getMontoDisponoble());
         register.put(COLUMN_MONTO_PRESUPUESTADO, categorias.getPresupuestoInicial());
-        register.put(COLUMN_FECHA,date);
+        register.put(COLUMN_FECHA, date);
 
         db.insertWithOnConflict(TABLE_CATEGORIAS, null, register, SQLiteDatabase.CONFLICT_REPLACE);
         db.close();
     }
 
+
     public Cursor cargarCursor() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String [] columnas= new String[]{COLUMN_ID,COLUMN_CATEGORIA,COLUMN_IMAGEN,COLUMN_MONTO_DISPONIBLE,COLUMN_MONTO_PRESUPUESTADO,COLUMN_FECHA};
-        return db.query(TABLE_CATEGORIAS,columnas,null,null,null,null,null,null );
+        String[] columnas = new String[]{COLUMN_ID, COLUMN_CATEGORIA, COLUMN_IMAGEN
+                , COLUMN_MONTO_DISPONIBLE, COLUMN_MONTO_PRESUPUESTADO, COLUMN_FECHA};
+        return db.query(TABLE_CATEGORIAS, columnas, null, null, null, null, null, null);
     }
 
 
-
-    public List<Categorias> getListCategorias(){
+    public List<Categorias> getListCategorias() {
         List<Categorias> list = new ArrayList<>();
         Cursor c = cargarCursor();
-        while (c.moveToNext()){
+        while (c.moveToNext()) {
             Categorias categorias = new Categorias(context);
             categorias.setId(c.getString(0));
             categorias.setTitles(c.getString(1));
