@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/content_principal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/white"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
         <ImageView
-            android:padding="5dp"
             android:id="@+id/imag_categorias"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:padding="5dp"
+            android:src="@mipmap/ic_launcher" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,13 +31,13 @@
                 android:id="@+id/title_categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/cyan900"
-                android:text="Title"
-                android:textSize="20sp"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Title"
+                android:textColor="@color/cyan900"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/presupuestado"
@@ -56,9 +55,9 @@
                 android:layout_below="@+id/presupuestado"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_corner"
-                android:textColor="@color/cyan600"
                 android:inputType="number"
                 android:text="5000"
+                android:textColor="@color/cyan600"
                 android:textSize="15sp" />
 
             <LinearLayout
@@ -85,9 +84,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/fecha_presupuesto"
-                    android:textSize="12dp"
                     android:layout_below="@+id/fecha_presupuesto"
-                    android:text="Junio, 2017" />
+                    android:text="Junio, 2017"
+                    android:textSize="12dp" />
 
             </LinearLayout>
 
@@ -97,38 +96,38 @@
 
     <LinearLayout
         android:id="@+id/content_secundario"
-        android:layout_below="@+id/content_principal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/content_principal"
         android:background="@color/cyan800"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:padding="5dp"
-        android:gravity="center_horizontal">
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/disponible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Disponible"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tx_disp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/disponible"
-                android:textColor="@color/cyan600"
                 android:background="@drawable/rounded_corner"
                 android:inputType="number"
                 android:text="5000"
+                android:textColor="@color/cyan600"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -145,9 +144,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gastado"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tx_gasto"
@@ -155,17 +154,17 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
                 android:inputType="number"
-                android:textColor="@color/cyan600"
                 android:text="0"
+                android:textColor="@color/cyan600"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler2"
-        android:layout_below="@+id/content_secundario"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/content_secundario">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -175,9 +174,9 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
-        android:src="@drawable/add"/>
+        android:layout_marginRight="15dp"
+        android:src="@drawable/add" />
 
 
 </RelativeLayout>

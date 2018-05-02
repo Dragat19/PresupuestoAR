@@ -46,16 +46,14 @@ public class ItemsGastosAdapter extends RecyclerView.Adapter<ItemsGastosAdapter.
         return gastos.size();
     }
 
-    static class ItemViewHolder extends RecyclerView.ViewHolder {
+    class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mDescripcion, mGastos;
-        private CardView cardView;
 
-        public ItemViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
             mDescripcion = (TextView) itemView.findViewById(R.id.descripcion_items);
             mGastos = (TextView) itemView.findViewById(R.id.gastos_items);
-            cardView = (CardView) itemView.findViewById(R.id.card_view_categorias);
         }
     }
 }

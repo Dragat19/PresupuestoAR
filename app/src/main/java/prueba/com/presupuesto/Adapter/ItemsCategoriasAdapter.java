@@ -11,11 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import java.util.List;
 
-import prueba.com.presupuesto.Model.Categorias;
 import prueba.com.presupuesto.Activity.GastosActivity;
+import prueba.com.presupuesto.Model.Categorias;
 import prueba.com.presupuesto.R;
 
 /**
@@ -31,7 +30,6 @@ public class ItemsCategoriasAdapter extends RecyclerView.Adapter<ItemsCategorias
     public static final String PRESUPUESTO_POSICION = "num_categoria";
 
     private Context context;
-    private String diponible;
     private List<Categorias> categorias;
 
     public ItemsCategoriasAdapter(Context context, List<Categorias> categorias) {
@@ -42,8 +40,8 @@ public class ItemsCategoriasAdapter extends RecyclerView.Adapter<ItemsCategorias
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_info, parent, false);
-        ItemViewHolder redditView = new ItemViewHolder(v);
-        return redditView;
+        ItemViewHolder ItemViewHolder = new ItemViewHolder(v);
+        return ItemViewHolder;
     }
 
     @Override
@@ -54,12 +52,10 @@ public class ItemsCategoriasAdapter extends RecyclerView.Adapter<ItemsCategorias
         holder.mValue2.setText("$" + categorias.get(position).getMontoDisponoble());
         holder.mImagen.setImageResource(categorias.get(position).getImagen());
 
-
         holder.mContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, GastosActivity.class);
-                intent.putExtra(PRESUPUESTO_POSICION, position);
                 intent.putExtra(PRESUPUESTO_TITLE, categorias.get(position).getTitles());
                 intent.putExtra(PRESUPUESTO_IMAG, categorias.get(position).getImagen());
                 intent.putExtra(PRESUPUESTO_VALUE1, categorias.get(position).getPresupuestoInicial());
@@ -71,17 +67,17 @@ public class ItemsCategoriasAdapter extends RecyclerView.Adapter<ItemsCategorias
 
     @Override
     public int getItemCount() {
-        return categorias.size();
+        return categorias != null ? categorias.size() : 0;
     }
 
 
-    static class ItemViewHolder extends RecyclerView.ViewHolder {
+    class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mImagen;
         private CardView mContainer;
         private TextView mTitle, mValue1, mValue2;
 
-        public ItemViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
 
             mContainer = (CardView) itemView.findViewById(R.id.card_view);

@@ -1,7 +1,6 @@
 package prueba.com.presupuesto.Activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,12 +16,13 @@ import java.util.List;
 import java.util.Locale;
 
 import prueba.com.presupuesto.Adapter.ItemsCategoriasAdapter;
-import prueba.com.presupuesto.database.DBPresupuestos;
 import prueba.com.presupuesto.Model.Categorias;
 import prueba.com.presupuesto.R;
+import prueba.com.presupuesto.database.DBPresupuestos;
+
 import static prueba.com.presupuesto.database.DBPresupuestos.DATABASE_NAME;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     private RecyclerView recyclerView;
     private ItemsCategoriasAdapter adapter;
@@ -38,21 +38,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_presupuesto);
-        spAno = (Spinner) findViewById(R.id.ano_spinner);
-        spMes = (Spinner) findViewById(R.id.mes_spinner);
+        setContentView(R.layout.activity_principal);
 
-        categorias = new ArrayList<>();
-        date = new SimpleDateFormat("MMMM yyyy", Locale.getDefault()).format(new Date());
-        Log.d("Fecha", date);
 
+        initView();
+        initListener();
 
         String mes = spMes.getSelectedItem().toString();
         String ano = spAno.getSelectedItem().toString();
         String fechaSelecionada = mes + " " + ano;
 
-        db = new DBPresupuestos(MainActivity.this, DATABASE_NAME, null, 1);
         if (db.getListCategorias().size() != 0) {
             Log.e("Fecha Seleccionada", fechaSelecionada);
             adapter = new ItemsCategoriasAdapter(this, db.getListCategorias());
@@ -65,6 +60,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    protected void initView() {
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_presupuesto);
+        spAno = (Spinner) findViewById(R.id.ano_spinner);
+        spMes = (Spinner) findViewById(R.id.mes_spinner);
+
+        categorias = new ArrayList<>();
+        db = new DBPresupuestos(MainActivity.this, DATABASE_NAME, null, 1);
+        date = new SimpleDateFormat("MMMM yyyy", Locale.getDefault()).format(new Date());
+        Log.d("Fecha", date);
+    }
+
+    @Override
+    protected void initListener() {
 
     }
 
